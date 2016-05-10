@@ -1018,7 +1018,7 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comment deleted by {{user}} - {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Comments",
         "COMMENTS_COUNT": "{{comments}} Comments",
         "ORDER": "Order",
