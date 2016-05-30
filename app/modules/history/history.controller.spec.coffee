@@ -104,13 +104,13 @@ describe "HistorySection", ->
         historyCtrl = controller "HistorySection"
         activities = {
             'activity1': {
-                'values_diff': '1'
+                'values_diff': {"k1": [0, 1]}
             },
             'activity2': {
-                'values_diff': '2'
+                'values_diff': {"k2": [0, 1]}
             },
             'activity3': {
-                'values_diff': '3'
+                'values_diff': {"k3": [0, 1]}
             },
         }
 
