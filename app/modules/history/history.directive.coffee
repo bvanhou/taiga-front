@@ -20,8 +20,11 @@
 module = angular.module('taigaHistory')
 
 HistorySectionDirective = () ->
+    link = (scope, el, attr, ctrl) ->
+        scope.$on "object:updated", -> ctrl._loadHistory(scope.type, scope.id)
 
     return {
+        link: link,
         templateUrl:"history/history.html",
         controller: "HistorySection",
         controllerAs: "vm",
