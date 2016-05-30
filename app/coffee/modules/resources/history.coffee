@@ -34,7 +34,6 @@ resourceProvider = ($repo, $http, $urls) ->
     service.editComment = (type, objectId, activityId, comment) ->
         url = $urls.resolve("history/#{type}")
         url = "#{url}/#{objectId}/edit_comment"
-        console.log url
         params = {
             id: activityId
         }

@@ -54,7 +54,6 @@ class HistorySectionController
         objectId = @.id
         activityId = commentId
 
-        console.log type, objectId, activityId
         return @rs.history.deleteComment(type, objectId, activityId).then =>
             @._loadHistory()
 
