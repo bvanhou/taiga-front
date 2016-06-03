@@ -76,6 +76,16 @@ section.home-project-list(ng-if="vm.projects.size")
                     title="{{ 'PROJECT.PRIVATE' | translate }}"
                 )
                     tg-svg(svg-icon="icon-lock")
+                    -console.log(project)
+                span.current-spring(
+                    a.see-more-projects-btn.button-gray(
+                        href="#",
+	                    ng-show="vm.projects.size",
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
+	                    title="{{'PROJECT.NAVIGATION.MANAGE_PROJECTS' | translate}}",
+	                    translate="PROJECT.NAVIGATION.MANAGE_PROJECTS"
+                    )
+                )
 
     a.see-more-projects-btn.button-gray(
         href="#",
