@@ -1,0 +1,65 @@
+.card-tags
+    a.card-tag(
+        href=""
+        ng-repeat="tag in item.colorized_tags"
+        style="background-color: {{tag.color}}" title="{{tag.name}}"
+    )
+
+a.card-owner(
+    ng-click="onClickAssignedTo({item: item})"
+    href=""
+    ng-if="item.assigned_to"
+)
+    img(ng-src="{{item.assigned_to.photo}}")
+    span.card-owner-name {{item.assigned_to.full_name}}
+
+a.card-owner(
+    href=""
+    ng-if="!item.assigned_to"
+)
+    img(src="/#{v}/images/unnamed.png")
+    span.card-owner-name(translate="COMMON.ASSIGNED_TO.NOT_ASSIGNED")
+
+h2.card-title
+    a(
+        href="#"
+        tg-nav="project-userstories-detail:project=project.slug,ref=item.model.ref",
+        tg-nav-get-params="{\"kanban-status\": {{item.model.status}}}"
+        title="#{{ ::item.model.ref }} {{ item.model.subject }}"
+    ) {{::"#" + item.model.ref}} {{item.model.subject}}
+
+
+    p
+      a(
+        tg-loading="loading",
+        tg-check-permission="modify_task",
+        href="#",
+        ng-click="onClickEdit({item: item})"
+      ) Edit
+
+.card-data
+    span.card-estimation(
+        ng-if="item.model.total_points === null",
+        translate="US.NOT_ESTIMATED"
+    )
+    span.card-estimation(
+        ng-if="item.model.total_points !== null"
+    ) {{"COMMON.FIELDS.POINTS" | translate}} {{item.model.total_points}}
+    .card-statistics
+        .statistic.card-votes
+            i.icon.ion-arrow-up-b
+            span {{item.model.total_voters}}
+        .statistic.card-comments
+            i.icon.ion-chatbox-working
+            span {{item.model.total_comments}}
+        .statistic.card-watchers.active
+            i.icon.ion-eye
+            span {{item.model.total_watchers}}
+
+.card-completion
+    .card-completion-bar
+    .card-completion-percentage
+    span.card-tooltip tasks 1/5
+
+.card-unfold(role="button")
+    i.icon.ion-more

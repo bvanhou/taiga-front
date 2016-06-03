@@ -1,0 +1,126 @@
+$green: #5b8200;
+$green-light: #9dce0a;
+$gray-light: #e4e3e3;
+
+.card {
+  width: 250px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 3px 3px 2px #ccc;
+}
+
+.card-tags {
+  display: flex;
+  .tag {
+    height: .5rem;
+    display: block;
+    flex: 1;
+  }
+}
+
+.card-owner {
+  display: flex;
+  align-items: center;
+  img {
+    width: 3rem;
+    height: 3rem;
+    margin-right: .5rem;
+  }
+  .card-owner-name {
+    color: #999;
+  }
+}
+
+.card-title {
+  padding: 0 1rem;
+  font-weight: normal;
+  font-size: 16px;
+  color: #333;
+  margin: 1rem 0 .25rem;
+}
+
+.card-data {
+  margin-bottom: 1rem;
+  color: #999;
+  font-size: 14px;
+  display:flex;
+  padding: 0 1rem;
+  justify-content: space-between;
+}
+
+.card-statistics {
+  display: flex;
+  .statistic {
+    margin-left: .5rem;
+    &.active {
+      color: darken($green-light, 5%);
+    }
+  }
+  .icon {
+    margin-right: .2rem;
+  }
+}
+
+.card-completion {
+  position:relative;
+  margin: 0 .5rem;
+  height: 1rem;
+  .card-completion-bar {
+    width: 100%;
+    background: $gray-light;
+    height: .4rem;
+  }
+  .card-completion-percentage {
+    width: 40%;
+    background: $green-light;
+    height: .4rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    &:hover {
+      + .card-tooltip {
+        opacity: 1;
+      }
+    }
+  }
+  .card-tooltip {
+    transition: opacity .2s;
+    opacity: 0;
+    background: #111;
+    padding: .25rem 1rem;
+    color: #FFF;
+    position: absolute;
+    top: -2rem;
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+    left: calc(30% - 50px);
+    position: relative;
+    font-size: 14px;
+    &:after {
+      width: 10px;
+      height: 10px;
+      background: black;
+      content: '';
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.card-unfold {
+  text-align: center;
+  color: #bcbcbc;
+  font-size: 21px;
+  cursor: pointer;
+  margin: 0;
+  transition: all .2s ease-in;
+  &:hover {
+    background: linear-gradient(white, #fafafa);
+    color: darken(#bcbcbc, 10%);
+  }
+}

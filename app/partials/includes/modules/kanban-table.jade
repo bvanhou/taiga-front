@@ -70,13 +70,28 @@ div.kanban-table(tg-kanban-squish-column, tg-kanban-sortable)
                 tg-kanban-column-height-fixer,
                 tg-bind-scope
             )
-                div.kanban-task(
-                    ng-repeat="us in usByStatus[s.id] track by us.id",
-                    tg-kanban-userstory,
-                    ng-model="us",
+                //- div.kanban-task(
+                //-     ng-repeat="us in usByStatus[s.id] track by us.id",
+                //-     tg-kanban-userstory,
+                //-     ng-model="us",
+                //-     tg-bind-scope,
+                //-     tg-class-permission="{'readonly': '!modify_task'}"
+                //-     ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'card-placeholder': us.isPlaceholder}"
+                //-     placeholder="{{us.isPlaceholder}}"
+                //- )
+                //- div.kanban-column-intro(ng-if="s.is_archived", tg-kanban-archived-status-intro="s")
+                div(
+                    ng-repeat="us in usByStatus[s.id] track by us.model.id",
                     tg-bind-scope,
-                    tg-class-permission="{'readonly': '!modify_task'}"
-                    ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'card-placeholder': us.isPlaceholder}"
                     placeholder="{{us.isPlaceholder}}"
                 )
+                    tg-card(
+                        on-click-edit="ctrl.editUs(item)"
+                        on-click-assigned-to="ctrl.changeUsAssignedTo(item)"
+                        project="project"
+                        item="us"
+                        ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'card-placeholder': us.isPlaceholder}"
+                        tg-class-permission="{'readonly': '!modify_task'}"
+                    )
+
                 div.kanban-column-intro(ng-if="s.is_archived", tg-kanban-archived-status-intro="s")
